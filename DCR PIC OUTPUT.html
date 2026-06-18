@@ -127,27 +127,6 @@
     <label for="journal">When you look back on today, who did you intentionally connect with?</label>
     <input type="text" id="journal" />
 
-    <label for="exercise">PE - Physical Exercise</label>
-    <select id="exercise">
-      <option value="">Blank</option>
-      <option value="Run">Run</option>
-      <option value="Walk">Walk</option>
-      <option value="Swim">Swim</option>
-      <option value="Gym">Gym</option>
-      <option value="Yoga">Yoga</option>
-      <option value="Other">Other</option>
-    </select>
-    <div id="otherExerciseContainer">
-      <label for="otherExercise">Specify Exercise</label>
-      <input type="text" id="otherExercise" />
-    </div>
-
-    <label for="meditation">M - Meditation</label>
-    <select id="meditation">
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
-
     <button type="submit">Submit</button>
   </form>
 
@@ -159,9 +138,6 @@
   <script>
     const dcr = document.getElementById("dcr");
     const dcrDay = document.getElementById("dcrDay");
-    const exercise = document.getElementById("exercise");
-    const otherExerciseContainer = document.getElementById("otherExerciseContainer");
-
     dcr.addEventListener("change", () => {
       const maxDay = dcr.value === "30DCR" ? 30 : dcr.value === "90DCR" ? 90 : 0;
       dcrDay.innerHTML = "";
@@ -172,9 +148,6 @@
         dcrDay.appendChild(option);
       }
     });
-
-    exercise.addEventListener("change", () => {
-      otherExerciseContainer.style.display = exercise.value === "Other" ? "block" : "none";
     });
 
     document.getElementById("reflectionForm").addEventListener("submit", function(e) {
@@ -196,8 +169,6 @@
       const conversation = document.getElementById("conversation").value;
       const mode = document.getElementById("mode").value;
       const journal = document.getElementById("journal").value;
-      const exerciseVal = exercise.value === "Other" ? document.getElementById("otherExercise").value : exercise.value;
-      const meditation = document.getElementById("meditation").value;
 
       const result = `**${name} ${dcrValue}**\n\n` +
         `**U:** ${u}\n` +
@@ -206,8 +177,6 @@
         `**A:** ${associate}\n**Key Step:** ${aFollow}\n` +
         `**A:** ${accountability}\n` +
         `**C:** ${conversation}\nMode: ${mode === "Both" ? "Online and Offline" : mode}\n` +
-        `**PE:** 🏃 ${exerciseVal || "None"}\n` +
-        `**M:** 🧘 ${meditation}\n` +
         `**Journal:** ${journal}`;
 
       const output = document.getElementById("output");
