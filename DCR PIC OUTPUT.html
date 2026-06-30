@@ -1,192 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daily DCR Reflection</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      padding: 1rem;
-      max-width: 600px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 1rem;
-    }
-    input[type="text"],
-    textarea,
-    select {
-      width: 100%;
-      padding: 0.6rem;
-      margin-top: 0.3rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      margin-top: 1.5rem;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 0.7rem;
-      width: 100%;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .output {
-      margin-top: 2rem;
-      background: #fff url('data:image/webp;base64,UklGRiIAAABXRUJQVlA4WAoAAAAQAAAACwAABwAAQUxQSBQAAAABYktHRAD/AABEIABkAGQAwKgAAABwAgCdASoIAAgAAkA4JZwEAAD+/gb5zjCyDBAAA') no-repeat center top;
-      background-size: 80px;
-      padding: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      white-space: pre-wrap;
-      text-align: center;
-    }
-    #otherExerciseContainer {
-      display: none;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daily Reflection Form</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  pre {
+    background: #f4f4f4;
+    padding: 15px;
+    white-space: pre-wrap;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+</style>
 </head>
+
 <body>
-  <h2>Daily DCR Reflection</h2>
-  <form id="reflectionForm">
-    <label for="name">Name</label>
-    <input type="text" id="name" required />
 
-    <label for="dcr">DCR</label>
-    <select id="dcr">
-      <option value="">-- Select --</option>
-      <option value="30DCR">30DCR</option>
-      <option value="90DCR">90DCR</option>
-    </select>
+<h2>Daily Reflection Form</h2>
 
-    <label for="dcrDay">Day of Core Run</label>
-    <select id="dcrDay"></select>
+<form id="reflectionForm">
 
-    <label for="u">U (Used all the products you can)</label>
-    <select id="u">
-      <option value="Yes - All I could use today">Yes - All I could use today</option>
-      <option value="No">No</option>
-    </select>
+  <label for="name">Name</label>
+  <input type="text" id="name" required />
 
-    <label for="audioTrack">L - Audio Track</label>
-    <input type="text" id="audioTrack" />
+  <label for="date">Date 📆</label>
+  <input type="date" id="date" required />
 
-    <label for="speaker">L - Speaker</label>
-    <input type="text" id="speaker" />
+  <label for="dcr">DCR 🏃 (e.g., 9/90)</label>
+  <input type="text" id="dcr" required />
 
-    <label for="listenTakeaway">L - Key Takeaways</label>
-    <textarea id="listenTakeaway"></textarea>
+  <label for="used">U ✅ (Used all products you can?)</label>
+  <select id="used" required>
+    <option value="">Select</option>
+    <option value="Yes - All I could use today">Yes</option>
+    <option value="No">No</option>
+  </select>
 
-    <label for="book">R - Book Title</label>
-    <input type="text" id="book" />
+  <label for="listened">L 🎧 (Audio title and speakers)</label>
+  <input type="text" id="listened" required />
 
-    <label for="chapterNumber">R - Chapter Number</label>
-    <input type="text" id="chapterNumber" />
+  <label for="listenedTakeaway">✍️ Key Takeaways from audio</label>
+  <textarea id="listenedTakeaway" rows="3" required></textarea>
 
-    <label for="chapterName">R - Chapter Name</label>
-    <input type="text" id="chapterName" />
+  <label for="read">R 📖 (Book title and chapter)</label>
+  <input type="text" id="read" required />
 
-    <label for="associate">A - Associate (VES)</label>
-    <select id="associate">
-      <option value="NA VES">NA VES</option>
-      <option value="UK VES">UK VES</option>
-      <option value="IND VES">IND VES</option>
-      <option value="AUS VES">AUS VES</option>
-    </select>
+  <label for="readTakeaway">✍️ Key Takeaways from reading</label>
+  <textarea id="readTakeaway" rows="3" required></textarea>
 
-    <label for="aFollow">What’s one step you’re not willing to delay?</label>
-    <input type="text" id="aFollow" />
+  <label for="associate">A 🤝 (Associate - select one)</label>
+  <select id="associate" required>
+    <option value="">Select</option>
+    <option value="NA VES">NA VES</option>
+    <option value="UK VES">UK VES</option>
+    <option value="IND VES">IND VES</option>
+    <option value="AUS VES">AUS VES</option>
+  </select>
 
-    <label for="accountability">A - Accountability Message</label>
-    <select id="accountability">
-      <option value="This message">This message</option>
-    </select>
+  <label for="accountability">A ✅ (Accountability Message)</label>
+  <textarea id="accountability" rows="2" required></textarea>
 
-    <label for="conversation">C - Conversations Initiated</label>
-    <select id="conversation">
-      <option value="Yes">Yes</option>
-      <option value="No">No</option>
-    </select>
+  <label for="conversationInitiated">C 🗣 (Conversation initiated?)</label>
+  <select id="conversationInitiated" required>
+    <option value="">Select</option>
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>
 
-    <label for="mode">Mode</label>
-    <select id="mode">
+  <div id="conversationLogicDiv" style="display:none;">
+    <label for="conversationLogic">If Yes, what mode?</label>
+    <select id="conversationLogic">
+      <option value="">Select</option>
       <option value="Online">Online</option>
       <option value="Offline">Offline</option>
       <option value="Both">Both</option>
     </select>
+  </div>
 
-    <label for="journal">When you look back on today, who did you intentionally connect with?</label>
-    <input type="text" id="journal" />
+  <label for="question">Additional Question (optional)</label>
+  <textarea id="question" rows="2"></textarea>
 
-    <button type="submit">Submit</button>
-  </form>
+  <label for="reflections">Reflections</label>
+  <textarea id="reflections" rows="4" required></textarea>
 
-  <div class="output" id="output"></div>
+  <button type="submit" id="submitBtn">Submit</button>
+</form>
 
-  <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+<pre id="output"></pre>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <script>
-    const dcr = document.getElementById("dcr");
-    const dcrDay = document.getElementById("dcrDay");
-    dcr.addEventListener("change", () => {
-      const maxDay = dcr.value === "30DCR" ? 30 : dcr.value === "90DCR" ? 90 : 0;
-      dcrDay.innerHTML = "";
-      for (let i = 1; i <= maxDay; i++) {
-        const option = document.createElement("option");
-        option.value = `${i}/${maxDay}`;
-        option.textContent = `${i}/${maxDay}`;
-        dcrDay.appendChild(option);
+<script>
+  const form = document.getElementById('reflectionForm');
+  const conversationSelect = document.getElementById('conversationInitiated');
+  const conversationLogicDiv = document.getElementById('conversationLogicDiv');
+  const conversationLogicSelect = document.getElementById('conversationLogic');
+  const output = document.getElementById('output');
+  const submitBtn = document.getElementById('submitBtn');
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxI7YYgib0Ttox7DiIsju6KHJ7pcsstYml_mCM4MpwvDpxCpGfT5Q4lZCHceeE49GE0/exec";
+
+  conversationSelect.addEventListener('change', () => {
+    if (conversationSelect.value === 'Yes') {
+      conversationLogicDiv.style.display = 'block';
+      conversationLogicSelect.required = true;
+    } else {
+      conversationLogicDiv.style.display = 'none';
+      conversationLogicSelect.required = false;
+      conversationLogicSelect.value = '';
+    }
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    let convMode = conversationLogicSelect.value;
+    if (convMode === 'Both') {
+      convMode = 'Online and Offline';
+    }
+
+    const result =
+`Name — ${document.getElementById('name').value}
+Date 📆 - ${document.getElementById('date').value}
+DCR 🏃 - ${document.getElementById('dcr').value}
+U ✅ - ${document.getElementById('used').value}
+L 🎧 - ${document.getElementById('listened').value}
+✍️ Key Takeaways - ${document.getElementById('listenedTakeaway').value}
+R 📖 - ${document.getElementById('read').value}
+✍️ Key Takeaways - ${document.getElementById('readTakeaway').value}
+A 🤝 - ${document.getElementById('associate').value}
+A ✅ - ${document.getElementById('accountability').value}
+C 🗣 - ${conversationSelect.value}
+${conversationSelect.value === 'Yes' ? `Logic - ${convMode}` : ''}
+Q ❓ - ${document.getElementById('question').value || 'N/A'}
+Reflections - ${document.getElementById('reflections').value}`;
+
+    output.textContent = result;
+
+    try {
+      await navigator.clipboard.writeText(result);
+    } catch (err) {
+      console.log("Clipboard copy failed:", err);
+    }
+
+    const payload = {
+      name: document.getElementById('name').value,
+      date: document.getElementById('date').value,
+      dcr: document.getElementById('dcr').value,
+      used: document.getElementById('used').value,
+      listened: document.getElementById('listened').value,
+      listenedTakeaway: document.getElementById('listenedTakeaway').value,
+      read: document.getElementById('read').value,
+      readTakeaway: document.getElementById('readTakeaway').value,
+      associate: document.getElementById('associate').value,
+      accountability: document.getElementById('accountability').value,
+      conversation: conversationSelect.value,
+      conversationMode: convMode,
+      question: document.getElementById('question').value,
+      reflections: document.getElementById('reflections').value
+    };
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const text = await response.text();
+      console.log("Server Response:", text);
+
+      if (text.includes('"ok":true')) {
+        alert("Submitted successfully and sent to Telegram!");
+        form.reset();
+        conversationLogicDiv.style.display = 'none';
+      } else {
+        alert("Submitted, but Telegram may have failed. Check Console response.");
       }
-    });
-    });
 
-    document.getElementById("reflectionForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Telegram notification failed. Check browser console.");
+    }
 
-      const name = document.getElementById("name").value;
-      const dcrValue = document.getElementById("dcr").value;
-      const dcrDayValue = document.getElementById("dcrDay").value;
-      const u = document.getElementById("u").value;
-      const audio = document.getElementById("audioTrack").value;
-      const speaker = document.getElementById("speaker").value;
-      const listenTakeaway = document.getElementById("listenTakeaway").value;
-      const book = document.getElementById("book").value;
-      const chapterNumber = document.getElementById("chapterNumber").value;
-      const chapterName = document.getElementById("chapterName").value;
-      const associate = document.getElementById("associate").value;
-      const aFollow = document.getElementById("aFollow").value;
-      const accountability = document.getElementById("accountability").value;
-      const conversation = document.getElementById("conversation").value;
-      const mode = document.getElementById("mode").value;
-      const journal = document.getElementById("journal").value;
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit";
+  });
+</script>
 
-      const result = `**${name} ${dcrValue}**\n\n` +
-        `**U:** ${u}\n` +
-        `**L:** ${audio} - ${speaker}\n${listenTakeaway}\n` +
-        `**R:** ${book} - ${chapterNumber} - ${chapterName}\n` +
-        `**A:** ${associate}\n**Key Step:** ${aFollow}\n` +
-        `**A:** ${accountability}\n` +
-        `**C:** ${conversation}\nMode: ${mode === "Both" ? "Online and Offline" : mode}\n` +
-        `**Journal:** ${journal}`;
-
-      const output = document.getElementById("output");
-      output.textContent = result;
-      navigator.clipboard.writeText(result);
-
-      if (["30/30", "60/90", "90/90"].includes(dcrDayValue)) {
-        confetti();
-      }
-    });
-  </script>
 </body>
 </html>
